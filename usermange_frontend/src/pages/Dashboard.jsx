@@ -14,7 +14,7 @@ const PasswordChangeModal = ({ isOpen, onClose, onSave }) => {
             return;
         }
         try{
-            await authService.changePassword(currentPassword , newPassword);
+            await authService.changePassword(currentPassword , newPassword ,confirmNewPassword );
         }
         catch(error){
             setError("Failed to change password. Please try again.");

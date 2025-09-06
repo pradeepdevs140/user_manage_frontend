@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import{authService} from '../service/authServices'
 import { Link } from 'react-router-dom';
+import '../styles/Login.css'
 const Login = () => {
     const[error ,seterror] = useState('');
     const[username , setusername] = useState('');

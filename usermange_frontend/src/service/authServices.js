@@ -8,7 +8,7 @@ const api = axios.create({
     withCredentials: true,
 })
 
-api.interceptors.request.use(
+api.interceptors.response.use(
     (response)=> response , 
     (error)=>{
         if(error.response){
@@ -39,7 +39,7 @@ api.interceptors.request.use(
     }
 )
 const authService = {
-    signupNormalUser : async(username , email , password)=>{
+    signup : async(username , email , password)=>{
         try{
             const response = await api.post("/auth/register" ,
                  {username , email , password});
@@ -54,7 +54,8 @@ const authService = {
         try{
             const response = await api.post("/auth/login" , 
                 {username , password});
-                const user = authService.getCurrentUser();
+                fetchCurrentUser();
+                const user = await authService.fetchCurrentUser();
                 return {
                     ...response.data,
                     user
